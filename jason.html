@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody id="data">
+
+    </tbody>
+  </table>
+</div>
+
+
+
+<script>
+    fetch("http://127.0.0.1:8000/apilist/")
+    .then(res => { res.json()
+    .then(json => {console.log(json);
+        if (json.length > 0) {
+
+          var temp = "";
+          json.forEach((Enpdata) => {
+            temp += "<tr>";
+            temp += "<td>" + Enpdata.id + "</td>";
+            temp += "<td>" + Enpdata.name + "</td>";
+            temp += "<td>" + Enpdata.age+ "</td></tr>";
+          });
+          document.getElementById('data').innerHTML = temp;
+        }
+      }
+   )
+  }
+)
+</script>
+</body>
+</html>
+
